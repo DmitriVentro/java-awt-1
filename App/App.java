@@ -27,11 +27,8 @@ class ButtonW implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        int delta = fFrame.fCanvas.getDelta();
-        if (delta < 100) {
-            fFrame.fCanvas.setDelta(delta + 10);
-            fFrame.fCanvas.repaint();
-        }
+        fFrame.fCanvas.setX(fFrame.fCanvas.getX() - 25);
+        fFrame.fCanvas.repaint();
     }
 }
 
@@ -43,11 +40,8 @@ class ButtonE implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent arg0) {
-        int delta = fFrame.fCanvas.getDelta();
-        if (delta > 5) {
-            fFrame.fCanvas.setDelta(delta - 10);
-            fFrame.fCanvas.repaint();
-        }
+        fFrame.fCanvas.setX(fFrame.fCanvas.getX() + 25);
+        fFrame.fCanvas.repaint();
     }
 }
 
@@ -59,8 +53,21 @@ class ButtonN implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        fFrame.fCanvas.setY(fFrame.fCanvas.getY() + 10);
+        fFrame.fCanvas.setY(fFrame.fCanvas.getY() - 25);
         fFrame.fCanvas.repaint();        
+    }
+}
+
+class ButtonS implements ActionListener {
+    MyFrame fFrame;
+
+    public ButtonS(MyFrame f) {
+        fFrame = f;
+    }
+    @Override
+    public void actionPerformed(ActionEvent arg0) {
+        fFrame.fCanvas.setY(fFrame.fCanvas.getY() + 25);
+        fFrame.fCanvas.repaint();
     }
 }
 
@@ -130,6 +137,7 @@ class MyFrame extends Frame {
         fPanel.add(fButtonN, BorderLayout.NORTH);
 
         fButtonS = new Button("S");
+        fButtonS.addActionListener(new ButtonS(this));
         fPanel.add(fButtonS, BorderLayout.SOUTH);
 
         fCanvas = new MyCanvas();
