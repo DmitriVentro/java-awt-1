@@ -2,7 +2,6 @@ package App;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.concurrent.DelayQueue;
 
 class MyWindowAdapter extends WindowAdapter {
     Frame fFrame;
